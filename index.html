@@ -8,12 +8,52 @@
     <script src="app.js"></script>
 </head>
 <body>
+    <!-- Контейнер для звёзд -->
+    <div id="stars"></div>
+    
     <div class="container">
-        <h1>🏷️ KATEGOPWM</h1>
+        <h1>XP Shop</h1>
         <div class="grid">
-            <div class="card" onclick="selectCategory('CC1')">CC 1</div>
-            <div class="card" onclick="selectCategory('CC2')">CC 2</div>
+            <!-- Пример карточки -->
+            <div class="card" onclick="selectCategory('CC1')">
+                <div class="card-image">
+                    <img src="./images/brawl.jpg" alt="Категория 1">
+                </div>
+                <div class="card-title">Brawl Stars</div>
+            </div>
+    
+            <div class="card" onclick="selectCategory('CC2')">
+                <div class="card-image">
+                    <img src="https://example.com/image2.jpg" alt="Категория 2">
+                </div>
+                <div class="card-title">Clash Royale</div>
+            </div>
         </div>
     </div>
+
+    <script>
+        // Генерация звёзд
+        function createStars() {
+            const starsContainer = document.getElementById('stars');
+            const starCount = 50;
+            
+            for (let i = 0; i < starCount; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                
+                // Случайные координаты и анимация
+                star.style.left = Math.random() * 100 + '%';
+                star.style.top = Math.random() * 100 + '%';
+                star.style.animation = `
+                    fly ${3 + Math.random() * 8}s linear infinite,
+                    twinkle ${1 + Math.random() * 5}s ease-in-out infinite
+                `;
+                
+                starsContainer.appendChild(star);
+            }
+        }
+        
+        window.onload = createStars;
+    </script>
 </body>
 </html>
